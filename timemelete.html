@@ -102,27 +102,37 @@ body {
 </div>
 </div>
 <script>
+// date element
 const date_e = document.getElementById("date");
+// time elements
 const time_e = [
   "h1", "h2", "m1", "m2", "s1", "s2"
 ].map(v => document.getElementById(v));
+// analog clock elements (main)
 const anlg_e = [
   "anlgh", "anlgm", "anlgs"
 ].map(v => document.getElementById(v));
+// analog clock elements (blur)
 const anlg_be = [
   "anlgbh", "anlgbm", "anlgbs"
 ].map(v => document.getElementById(v));
+// zero padding format (2digits)
 const fm2 = new Intl.NumberFormat('en', {
   minimumIntegerDigits: 2,
-  useGrouping: false
+  useGrouping: false,
 });
+// Rotation of xy-coordinate about the origin
 function rstr(x, y, r) {
+  // r: angle of rotation: 0(0deg) ~ 1(360deg)
   let t = 2 * (r % 1) * Math.PI;
   let [s, c] = [Math.sin(t), Math.cos(t)];
+  // return: Rotated xy-coordinate string
   return `${(x*c-y*s).toFixed(2)} ${(x*s+y*c).toFixed(2)} `;
 }
-function step(timestamp) {
+// Screen update process for each frame
+function step() {
   const date = new Date();
+  // Update Date string
   date_e.textContent = [
     date.getFullYear(),
     "-",
@@ -132,26 +142,40 @@ function step(timestamp) {
     " ",
     ["Sun.","Mon.","Tue.","Wed.","Thu.","Fri.","Sat."][date.getDay()],
   ].join("");
+  // Update Time strings
   Array.from([
     fm2.format(date.getHours()),
     fm2.format(date.getMinutes()),
     fm2.format(date.getSeconds()),
   ].join('')).forEach((s, i) => { time_e[i].textContent = s });
-  let anlg_v = date.getHours() * 60 + date.getMinutes() + date.getSeconds() / 60 + date.getMilliseconds() / 60000;
-  let anlg_vm = anlg_v / 60 % 1;
-  let anlg_vh = anlg_v / (12 * 60) % 1;
-  let anlg_vs = anlg_v % 1;
-  let anlg_vt = anlg_v * 60 % 1;
-  [
-    `M${rstr(-12,12,anlg_vh)}L${rstr(-12,-50,anlg_vh)}L${rstr(12,-50,anlg_vh)}L${rstr(12,12,anlg_vh)}Z`,
-    `M${rstr(-8,8,anlg_vm)}L${rstr(-8,-80,anlg_vm)}L${rstr(8,-80,anlg_vm)}L${rstr(8,8,anlg_vm)}Z`,
-    date.getSeconds()>0?
-    `M0-99A99 99 0 0 1 ${rstr(0,-99,anlg_vs/2)}A99 99 0 0 1 ${rstr(0,-99,anlg_vs)}L${rstr(0,-83,anlg_vs)}A83 83 0 0 0 ${rstr(0,-83,anlg_vs/2)}A83 83 0 0 0 0-83Z`:
-    `M${rstr(0,-99,anlg_vt)}A99 99 0 0 1 ${rstr(0,-99,anlg_vt/2+.5)}A99 99 0 0 1 0-99A99 99 0 0 1 ${rstr(0,-99,anlg_vs)}L${rstr(0,-83,anlg_vs)}A83 83 0 0 0 0-83A83 83 0 0 0 ${rstr(0,-83,anlg_vt/2+.5)}A83 83 0 0 0 ${rstr(0,-83,anlg_vt)}Z`
-  ].forEach((d, i) => {
-    anlg_e[i].setAttribute("d", d);
-    anlg_be[i].setAttribute("d", d);
-  });
+  {
+    // Update SVG Paths of analog clock
+    let v = date.getHours() * 60 + date.getMinutes() + date.getSeconds() / 60 + date.getMilliseconds() / 60000;
+    // Angle of Hours (0(0deg) ~ 1(360deg))
+    let vh = v / (12 * 60) % 1;
+    // Angle of Minutes (0(0deg) ~ 1(360deg))
+    let vm = v / 60 % 1;
+    // Angle of Seconds (0(0deg) ~ 1(360deg))
+    let vs = v % 1;
+    // Angle of Milliseconds (0(0deg) ~ 1(360deg))
+    let vt = v * 60 % 1;
+    [
+      // Hours
+      `M${rstr(-12,12,vh)}L${rstr(-12,-50,vh)}L${rstr(12,-50,vh)}L${rstr(12,12,vh)}Z`,
+      // Minutes
+      `M${rstr(-8,8,vm)}L${rstr(-8,-80,vm)}L${rstr(8,-80,vm)}L${rstr(8,8,vm)}Z`,
+      // Seconds, Milliseconds
+      date.getSeconds()>0?
+        // 1 <= Seconds <= 59
+        `M0-99A99 99 0 0 1 ${rstr(0,-99,vs/2)}A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 ${rstr(0,-83,vs/2)}A83 83 0 0 0 0-83Z`
+      :
+        // Seconds == 0
+        `M${rstr(0,-99,vt)}A99 99 0 0 1 ${rstr(0,-99,vt/2+.5)}A99 99 0 0 1 0-99A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 0-83A83 83 0 0 0 ${rstr(0,-83,vt/2+.5)}A83 83 0 0 0 ${rstr(0,-83,vt)}Z`
+    ].forEach((d, i) => {
+      anlg_e[i].setAttribute("d", d);
+      anlg_be[i].setAttribute("d", d);
+    });
+  }
   window.requestAnimationFrame(step);
 }
 window.requestAnimationFrame(step);
