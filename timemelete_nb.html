@@ -34,7 +34,7 @@ body {
 }
 svg {
   width: 100vw;
-  height: 17.78vw;
+  height: 17.778vw;
 }
     </style>
   </head>
@@ -111,11 +111,12 @@ function step() {
     let vt = v * 60 % 1;
     anlg_e.setAttribute("d", [
       // Hours
-      `M${rstr(12,0,vh)}A12 12 0 0 1 ${rstr(-12,0,vh)}L${rstr(-12,-44,vh)}L${rstr(0,-56,vh)}L${rstr(12,-44,vh)}ZM0-4A4 4 0 0 0 0 4A4 4 0 0 0 0-4Z`,
+      `M${rstr(12,0,vh)}A12 12 0 0 1 ${rstr(-12,0,vh)}L${rstr(-12,-44,vh)}L${rstr(0,-56,vh)}L${rstr(12,-44,vh)}ZM0-6A6 6 0 0 0 0 6A6 6 0 0 0 0-6Z`,
       // Minutes
-      `M${rstr(8,0,vm)}A8 8 0 0 1 ${rstr(-8,0,vm)}L${rstr(-8,-72,vm)}L${rstr(0,-80,vm)}L${rstr(8,-72,vm)}ZM0-4A4 4 0 0 0 0 4A4 4 0 0 0 0-4Z`,
-      // Seconds, Milliseconds
+      `M${rstr(8,0,vm)}A8 8 0 0 1 ${rstr(-8,0,vm)}L${rstr(-8,-72,vm)}L${rstr(0,-80,vm)}L${rstr(8,-72,vm)}ZM0-6A6 6 0 0 0 0 6A6 6 0 0 0 0-6Z`,
+      // Sec circle
       "M0-94A94 94 0 0 1 0 94A94 94 0 0 1 0-94L0-88A88 88 0 0 0 0 88A88 88 0 0 0 0-88Z",
+      // Seconds, Milliseconds
       date.getSeconds()>0?
         // 1 <= Seconds <= 59
         `M0-99A99 99 0 0 1 ${rstr(0,-99,vs/3)}A99 99 0 0 1 ${rstr(0,-99,vs*2/3)}A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 ${rstr(0,-83,vs*2/3)}A83 83 0 0 0 ${rstr(0,-83,vs/3)}A83 83 0 0 0 0-83Z`
