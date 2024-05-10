@@ -1,8 +1,8 @@
 <html lang="ja">
-<head>
-<!-- Clock for Browser/OBS by Mizar <https://github.com/mizar> -->
-<!-- License: MIT (excluding Melete font face data) -->
-<style>
+  <head>
+    <!-- Clock for Browser/OBS by Mizar <https://github.com/mizar> -->
+    <!-- License: MIT (excluding Melete font face data) -->
+    <style>
 * {
   overflow: visible;
   margin: 0;
@@ -25,15 +25,6 @@ body {
   width: 100vw;
   height: 100vh;
   color: #e0e0ee;
-  text-shadow:
-  0.5vw 0.5vw 0.6vw #001840,
-  -0.5vw 0.5vw 0.6vw #001840,
-  0.5vw -0.5vw 0.6vw #001840,
-  -0.5vw -0.5vw 0.6vw #001840,
-  0.7vw 0 0.9vw #001840,
-  0 0.7vw 0.9vw #001840,
-  -0.7vw 0 0.9vw #001840,
-  0 -0.7vw 0.9vw #001840;
 }
 .inner {
   position: absolute;
@@ -41,81 +32,65 @@ body {
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
 }
-#date {
+svg {
   width: 100vw;
-  text-align: center;
-  font-weight: 700;
-  font-size: 4.5vw;
-  font-family: 'Melete', sans-serif;
+  height: 17.778vw;
 }
-#time {
-  width: 100vw;
-  text-align: center;
-  font-weight: 700;
-  font-size: 10.5vw;
-  font-family: 'Melete', sans-serif;
-  vertical-align: middle;
-}
-#h1,#h2,#m1,#m2,#s1,#s2 {
-  display: inline-block;
-  width: 13.5vw;
-  text-align: center;
-}
-#time .sep {
-  display: inline-block;
-  width: 2.5vw;
-  text-align: center;
-}
-#time svg {
-  width: 8vw;
-  height: 8vw;
-}
-.t2 {
-  font-size: 5vw;
-}
-</style>
-</head>
-<body>
-<div class="outer">
-<div class="inner">
-<div id="date"></div>
-<div id="time"><svg viewBox="-90 -90 180 180">
-<defs>
-  <filter id="Blur">
-    <feGaussianBlur stdDeviation="10"/>
-    <feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 8 0"></feColorMatrix>
-  </filter>
-</defs>
-<g fill="#001840" stroke="none" filter="url(#Blur)">
-  <path id="anlgbh" d=""/>
-  <path id="anlgbm" d=""/>
-  <path id="anlgbs" d=""/>
-  <path id="anlgbo" d="M0-94A94 94 0 0 1 0 94A94 94 0 0 1 0-94L0-88A88 88 0 0 0 0 88A88 88 0 0 0 0-88Z"/>
-</g>
-<g fill="#e0e0ee" stroke="none">
-  <path id="anlgh" d=""/>
-  <path id="anlgm" d=""/>
-  <path id="anlgs" d=""/>
-  <path id="anlgo" d="M0-94A94 94 0 0 1 0 94A94 94 0 0 1 0-94L0-88A88 88 0 0 0 0 88A88 88 0 0 0 0-88Z"/>
-</g>
-</svg><span id="h1"></span><span id="h2"></span><span class="sep">:</span><span id="m1"></span><span id="m2"></span><span class="sep">:</span><span id="s1"></span><span id="s2"></span></div>
-</div>
-</div>
-<script>
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <svg viewBox="0 0 1440 256">
+          <defs>
+            <filter id="Blur">
+              <feGaussianBlur stdDeviation="5"/>
+              <feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 8 0"></feColorMatrix>
+            </filter>
+          </defs>
+          <g font-family="Melete" font-size="150" font-weight="700" dominant-baseline="middle" text-anchor="middle">
+            <g fill="#001840" stroke="#001840" stroke-width="5" stroke-linejoin="round" filter="url(#Blur)">
+              <text id="bdate" x="810" y="55" font-size="70" letter-spacing="-10"></text>
+              <text id="bh1" x="300" y="165"></text>
+              <text id="bh2" x="490" y="165"></text>
+              <text x="605" y="165">:</text>
+              <text id="bm1" x="720" y="165"></text>
+              <text id="bm2" x="910" y="165"></text>
+              <text x="1025" y="165">:</text>
+              <text id="bs1" x="1140" y="165"></text>
+              <text id="bs2" x="1330" y="165"></text>
+              <path id="banlg" d="" transform="translate(111,128)"/>
+            </g>
+            <g fill="#e0e0ee" stroke="none">
+              <text id="date" x="810" y="55" font-size="70" letter-spacing="-10"></text>
+              <text id="h1" x="300" y="165"></text>
+              <text id="h2" x="490" y="165"></text>
+              <text x="605" y="165">:</text>
+              <text id="m1" x="720" y="165"></text>
+              <text id="m2" x="910" y="165"></text>
+              <text x="1025" y="165">:</text>
+              <text id="s1" x="1140" y="165"></text>
+              <text id="s2" x="1330" y="165"></text>
+              <path id="anlg" d="" transform="translate(111,128)"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <script>
 // date element
 const date_e = document.getElementById("date");
+const bdate_e = document.getElementById("bdate");
 // time elements
 const time_e = [
   "h1", "h2", "m1", "m2", "s1", "s2"
 ].map(v => document.getElementById(v));
+const btime_e = [
+  "bh1", "bh2", "bm1", "bm2", "bs1", "bs2"
+].map(v => document.getElementById(v));
 // analog clock elements (main)
-const anlg_e = [
-  "anlgh", "anlgm", "anlgs"
-].map(v => document.getElementById(v));
-// analog clock elements (blur)
-const anlg_be = [
-  "anlgbh", "anlgbm", "anlgbs"
-].map(v => document.getElementById(v));
+const anlg_e = document.getElementById("anlg");
+const banlg_e = document.getElementById("banlg");
 // zero padding format (2digits)
 const fm2 = new Intl.NumberFormat('en', {
   minimumIntegerDigits: 2,
@@ -127,13 +102,13 @@ function rstr(x, y, r) {
   let t = 2 * (r % 1) * Math.PI;
   let [s, c] = [Math.sin(t), Math.cos(t)];
   // return: Rotated xy-coordinate string
-  return `${(x*c-y*s).toFixed(2)} ${(x*s+y*c).toFixed(2)} `;
+  return `${(x*c-y*s).toFixed(3)} ${(x*s+y*c).toFixed(3)} `;
 }
 // Screen update process for each frame
 function step() {
   const date = new Date();
   // Update Date string
-  date_e.textContent = [
+  bdate_e.textContent = date_e.textContent = [
     date.getFullYear(),
     "-",
     fm2.format(date.getMonth()+1),
@@ -147,7 +122,7 @@ function step() {
     fm2.format(date.getHours()),
     fm2.format(date.getMinutes()),
     fm2.format(date.getSeconds()),
-  ].join('')).forEach((s, i) => { time_e[i].textContent = s });
+  ].join('')).forEach((s, i) => { btime_e[i].textContent = time_e[i].textContent = s });
   {
     // Update SVG Paths of analog clock
     let v = date.getHours() * 60 + date.getMinutes() + date.getSeconds() / 60 + date.getMilliseconds() / 60000;
@@ -159,25 +134,27 @@ function step() {
     let vs = v % 1;
     // Angle of Milliseconds (0(0deg) ~ 1(360deg))
     let vt = v * 60 % 1;
-    [
+    let anlg_path = [
       // Hours
       `M${rstr(12,0,vh)}A12 12 0 0 1 ${rstr(-12,0,vh)}L${rstr(-12,-44,vh)}L${rstr(0,-56,vh)}L${rstr(12,-44,vh)}ZM0-6A6 6 0 0 0 0 6A6 6 0 0 0 0-6Z`,
       // Minutes
       `M${rstr(8,0,vm)}A8 8 0 0 1 ${rstr(-8,0,vm)}L${rstr(-8,-72,vm)}L${rstr(0,-80,vm)}L${rstr(8,-72,vm)}ZM0-6A6 6 0 0 0 0 6A6 6 0 0 0 0-6Z`,
+      // Sec circle
+      "M0-94A94 94 0 0 1 0 94A94 94 0 0 1 0-94L0-88A88 88 0 0 0 0 88A88 88 0 0 0 0-88Z",
       // Seconds, Milliseconds
       date.getSeconds()>0?
         // 1 <= Seconds <= 59
-        `M0-99A99 99 0 0 1 ${rstr(0,-99,vs/2)}A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 ${rstr(0,-83,vs/2)}A83 83 0 0 0 0-83Z`
+        `M0-99A99 99 0 0 1 ${rstr(0,-99,vs/3)}A99 99 0 0 1 ${rstr(0,-99,vs*2/3)}A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 ${rstr(0,-83,vs*2/3)}A83 83 0 0 0 ${rstr(0,-83,vs/3)}A83 83 0 0 0 0-83Z`
       :
         // Seconds == 0
         `M${rstr(0,-99,vt)}A99 99 0 0 1 ${rstr(0,-99,vt/2+.5)}A99 99 0 0 1 0-99A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 0-83A83 83 0 0 0 ${rstr(0,-83,vt/2+.5)}A83 83 0 0 0 ${rstr(0,-83,vt)}Z`
-    ].forEach((d, i) => {
-      anlg_e[i].setAttribute("d", d);
-      anlg_be[i].setAttribute("d", d);
-    });
+    ].join('');
+    anlg_e.setAttribute("d", anlg_path);
+    banlg_e.setAttribute("d", anlg_path);
   }
   window.requestAnimationFrame(step);
 }
 window.requestAnimationFrame(step);
-</script>
-</body></html>
+    </script>
+  </body>
+</html>
