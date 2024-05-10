@@ -161,9 +161,9 @@ function step() {
     let vt = v * 60 % 1;
     [
       // Hours
-      `M${rstr(12,0,vh)}A12 12 0 0 1 ${rstr(-12,0,vh)}L${rstr(-12,-44,vh)}L${rstr(0,-56,vh)}L${rstr(12,-44,vh)}ZM0-4A4 4 0 0 0 0 4A4 4 0 0 0 0-4Z`,
+      `M${rstr(12,0,vh)}A12 12 0 0 1 ${rstr(-12,0,vh)}L${rstr(-12,-44,vh)}L${rstr(0,-56,vh)}L${rstr(12,-44,vh)}ZM0-6A6 6 0 0 0 0 6A6 6 0 0 0 0-6Z`,
       // Minutes
-      `M${rstr(8,0,vm)}A8 8 0 0 1 ${rstr(-8,0,vm)}L${rstr(-8,-72,vm)}L${rstr(0,-80,vm)}L${rstr(8,-72,vm)}ZM0-4A4 4 0 0 0 0 4A4 4 0 0 0 0-4Z`,
+      `M${rstr(8,0,vm)}A8 8 0 0 1 ${rstr(-8,0,vm)}L${rstr(-8,-72,vm)}L${rstr(0,-80,vm)}L${rstr(8,-72,vm)}ZM0-6A6 6 0 0 0 0 6A6 6 0 0 0 0-6Z`,
       // Seconds, Milliseconds
       date.getSeconds()>0?
         // 1 <= Seconds <= 59
