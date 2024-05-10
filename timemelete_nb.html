@@ -1,0 +1,132 @@
+<html lang="ja">
+  <head>
+    <!-- Clock for Browser/OBS by Mizar <https://github.com/mizar> -->
+    <!-- License: MIT (excluding Melete font face data) -->
+    <style>
+* {
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+@font-face {
+  /* Melete-Bold Version 0.200 https://dotcolon.net/font/melete/ Melete is licensed under the SIL Open Font License, Ver 1.1 */
+  font-family: "Melete";
+  font-weight: 700;
+  src: url("data:application/octet-stream;base64,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") format('woff2');
+}
+body {
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0 auto;
+  overflow: hidden;
+}
+.outer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  color: #e0e0ee;
+}
+.inner {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+svg {
+  width: 100vw;
+  height: 17.78vw;
+}
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <svg viewBox="0 0 1440 256">
+          <g fill="#e0e0ee" stroke="#001840" font-family="Melete" font-size="150" font-weight="700" stroke-width="20" stroke-linejoin="round" paint-order="stroke fill" dominant-baseline="middle" text-anchor="middle">
+            <text id="date" x="810" y="55" font-size="70" letter-spacing="-10"></text>
+            <text id="h1" x="300" y="165"></text>
+            <text id="h2" x="490" y="165"></text>
+            <text x="605" y="165">:</text>
+            <text id="m1" x="720" y="165"></text>
+            <text id="m2" x="910" y="165"></text>
+            <text x="1025" y="165">:</text>
+            <text id="s1" x="1140" y="165"></text>
+            <text id="s2" x="1330" y="165"></text>
+            <path id="anlg" d="" transform="translate(111,128)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <script>
+// date element
+const date_e = document.getElementById("date");
+// time elements
+const time_e = [
+  "h1", "h2", "m1", "m2", "s1", "s2"
+].map(v => document.getElementById(v));
+// analog clock elements (main)
+const anlg_e = document.getElementById("anlg");
+// zero padding format (2digits)
+const fm2 = new Intl.NumberFormat('en', {
+  minimumIntegerDigits: 2,
+  useGrouping: false,
+});
+// Rotation of xy-coordinate about the origin
+function rstr(x, y, r) {
+  // r: angle of rotation: 0(0deg) ~ 1(360deg)
+  let t = 2 * (r % 1) * Math.PI;
+  let [s, c] = [Math.sin(t), Math.cos(t)];
+  // return: Rotated xy-coordinate string
+  return `${(x*c-y*s).toFixed(3)} ${(x*s+y*c).toFixed(3)} `;
+}
+// Screen update process for each frame
+function step() {
+  const date = new Date();
+  // Update Date string
+  date_e.textContent = [
+    date.getFullYear(),
+    "-",
+    fm2.format(date.getMonth()+1),
+    "-",
+    fm2.format(date.getDate()),
+    " ",
+    ["Sun.","Mon.","Tue.","Wed.","Thu.","Fri.","Sat."][date.getDay()],
+  ].join("");
+  // Update Time strings
+  Array.from([
+    fm2.format(date.getHours()),
+    fm2.format(date.getMinutes()),
+    fm2.format(date.getSeconds()),
+  ].join('')).forEach((s, i) => { time_e[i].textContent = s });
+  {
+    // Update SVG Paths of analog clock
+    let v = date.getHours() * 60 + date.getMinutes() + date.getSeconds() / 60 + date.getMilliseconds() / 60000;
+    // Angle of Hours (0(0deg) ~ 1(360deg))
+    let vh = v / (12 * 60) % 1;
+    // Angle of Minutes (0(0deg) ~ 1(360deg))
+    let vm = v / 60 % 1;
+    // Angle of Seconds (0(0deg) ~ 1(360deg))
+    let vs = v % 1;
+    // Angle of Milliseconds (0(0deg) ~ 1(360deg))
+    let vt = v * 60 % 1;
+    anlg_e.setAttribute("d", [
+      // Hours
+      `M${rstr(12,0,vh)}A12 12 0 0 1 ${rstr(-12,0,vh)}L${rstr(-12,-44,vh)}L${rstr(0,-56,vh)}L${rstr(12,-44,vh)}ZM0-4A4 4 0 0 0 0 4A4 4 0 0 0 0-4Z`,
+      // Minutes
+      `M${rstr(8,0,vm)}A8 8 0 0 1 ${rstr(-8,0,vm)}L${rstr(-8,-72,vm)}L${rstr(0,-80,vm)}L${rstr(8,-72,vm)}ZM0-4A4 4 0 0 0 0 4A4 4 0 0 0 0-4Z`,
+      // Seconds, Milliseconds
+      "M0-94A94 94 0 0 1 0 94A94 94 0 0 1 0-94L0-88A88 88 0 0 0 0 88A88 88 0 0 0 0-88Z",
+      date.getSeconds()>0?
+        // 1 <= Seconds <= 59
+        `M0-99A99 99 0 0 1 ${rstr(0,-99,vs/3)}A99 99 0 0 1 ${rstr(0,-99,vs*2/3)}A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 ${rstr(0,-83,vs*2/3)}A83 83 0 0 0 ${rstr(0,-83,vs/3)}A83 83 0 0 0 0-83Z`
+      :
+        // Seconds == 0
+        `M${rstr(0,-99,vt)}A99 99 0 0 1 ${rstr(0,-99,vt/2+.5)}A99 99 0 0 1 0-99A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 0-83A83 83 0 0 0 ${rstr(0,-83,vt/2+.5)}A83 83 0 0 0 ${rstr(0,-83,vt)}Z`
+    ].join(''));
+  }
+  window.requestAnimationFrame(step);
+}
+window.requestAnimationFrame(step);
+    </script>
+  </body>
+</html>
