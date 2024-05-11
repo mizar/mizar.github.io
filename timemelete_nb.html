@@ -109,7 +109,7 @@ function step() {
     let vs = v % 1;
     // Angle of Milliseconds (0(0deg) ~ 1(360deg))
     let vt = v * 60 % 1;
-    anlg_e.setAttribute("d", [
+    let anlg_path = [
       // Hours
       `M${rstr(12,0,vh)}A12 12 0 0 1 ${rstr(-12,0,vh)}L${rstr(-12,-44,vh)}L${rstr(0,-56,vh)}L${rstr(12,-44,vh)}ZM0-6A6 6 0 0 0 0 6A6 6 0 0 0 0-6Z`,
       // Minutes
@@ -123,7 +123,8 @@ function step() {
       :
         // Seconds == 0
         `M${rstr(0,-99,vt)}A99 99 0 0 1 ${rstr(0,-99,vt/2+.5)}A99 99 0 0 1 0-99A99 99 0 0 1 ${rstr(0,-99,vs)}L${rstr(0,-83,vs)}A83 83 0 0 0 0-83A83 83 0 0 0 ${rstr(0,-83,vt/2+.5)}A83 83 0 0 0 ${rstr(0,-83,vt)}Z`
-    ].join(''));
+    ].join('');
+    anlg_e.setAttribute("d", anlg_path);
   }
   window.requestAnimationFrame(step);
 }
