@@ -36,28 +36,9 @@ svg {
   width: 100vw;
   height: 17.778vw;
 }
-    </style>
-  </head>
-  <body>
-    <div class="outer">
-      <div class="inner">
-        <svg viewBox="0 0 1440 256">
-          <g fill="#e0e0ee" stroke="#001840" font-family="Melete" font-size="150" font-weight="700" stroke-width="20" stroke-linejoin="round" paint-order="stroke fill" dominant-baseline="middle" text-anchor="middle">
-            <text id="date" x="810" y="55" font-size="75" letter-spacing="-20"></text>
-            <text id="h1" x="300" y="165"></text>
-            <text id="h2" x="490" y="165"></text>
-            <text x="605" y="165">:</text>
-            <text id="m1" x="720" y="165"></text>
-            <text id="m2" x="910" y="165"></text>
-            <text x="1025" y="165">:</text>
-            <text id="s1" x="1140" y="165"></text>
-            <text id="s2" x="1330" y="165"></text>
-            <path id="anlg" d="" transform="translate(112,128)"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-    <script>
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 // date element
 const date_e = document.getElementById("date");
 // time elements
@@ -128,6 +109,27 @@ function step() {
   window.requestAnimationFrame(step);
 }
 window.requestAnimationFrame(step);
-    </script>
-  </body>
+});
+</script>
+</head>
+<body>
+  <div class="outer">
+    <div class="inner">
+      <svg viewBox="0 0 1440 256">
+        <g fill="#e0e0ee" stroke="#001840" font-family="Melete" font-size="150" font-weight="700" stroke-width="20" stroke-linejoin="round" paint-order="stroke fill" dominant-baseline="middle" text-anchor="middle">
+          <text id="date" x="810" y="55" font-size="75" letter-spacing="-20"></text>
+          <text id="h1" x="300" y="165"></text>
+          <text id="h2" x="490" y="165"></text>
+          <text x="605" y="165">:</text>
+          <text id="m1" x="720" y="165"></text>
+          <text id="m2" x="910" y="165"></text>
+          <text x="1025" y="165">:</text>
+          <text id="s1" x="1140" y="165"></text>
+          <text id="s2" x="1330" y="165"></text>
+          <path id="anlg" d="" transform="translate(112,128)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</body>
 </html>
